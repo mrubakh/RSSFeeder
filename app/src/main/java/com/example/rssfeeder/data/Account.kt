@@ -4,5 +4,5 @@ data class Account (
     var uid: String = "",
     var email: String = "",
     var password: String = "",
-    var blogList: List<String> = emptyList()
+    var blogList: List<Blog> = emptyList()
 )
