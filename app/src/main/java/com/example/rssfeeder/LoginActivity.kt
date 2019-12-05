@@ -18,34 +18,28 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginClick(v: View) {
 
-
-
         if(!isFormValid()){
             return
         }
 
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+            username.text.toString(),
+            password.text.toString()
+        ).addOnSuccessListener {
+            Toast.makeText(
+                this@LoginActivity, "Login Successful",
+                Toast.LENGTH_LONG
+            ).show()
 
+            //Open main Activity
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 
-//        FirebaseAuth.getInstance().signInWithEmailAndPassword(
-//            username.text.toString(),
-//            password.text.toString()
-//        ).addOnSuccessListener {
-//            Toast.makeText(
-//                this@LoginActivity, "Login Successful",
-//                Toast.LENGTH_LONG
-//            ).show()
-//
-//            //Open Forum Activity
-//
-//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-//
-//        }.addOnFailureListener{
-//            Toast.makeText(
-//                this@LoginActivity, "Error: ${it.message}",
-//                Toast.LENGTH_LONG
-//            ).show()
-//        }
+        }.addOnFailureListener{
+            Toast.makeText(
+                this@LoginActivity, "Error: ${it.message}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
 
     }
