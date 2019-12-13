@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uzias.rssreader">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/rssfeed_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".core.application.RSSReaderApplication"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".core.startup.RegistrationActivity"></activity>
+        <activity android:name=".core.startup.LoginActivity" ></activity>
+        <activity android:name=".feed.presentation.view.FeedActivity"></activity>
+        <activity android:name=".core.startup.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
