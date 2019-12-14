@@ -1,146 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:fitsSystemWindows="true">
+
+<LinearLayout
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/animationScreen">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="283dp"
-        android:layout_height="197dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterTitle"
-        app:srcCompat="@drawable/login_icon_2" />
-
-    <EditText
-        android:id="@+id/regUser"
+    <ImageView android:src="@drawable/rssfeed_logo"
         android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Email Label -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/regUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email" />
+    </android.support.design.widget.TextInputLayout>
 
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-    <!-- android:enabled="false" -->
-
-
-    <EditText
-        android:id="@+id/regPass2"
-        android:layout_width="wrap_content"
+    <!-- Password Label -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:hint="Re-enter Password"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPass" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/regPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/regPass"
-        android:layout_width="wrap_content"
+    <!-- Confirm Password Label -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_password"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regUser" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/regPass2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Re-enter Password"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <Button
+    <!-- Signup Button -->
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/register"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="15dp"
-        android:onClick="registerClick"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPass2" />
+        android:onClick="registerClick"/>
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
+    <TextView android:id="@+id/link_login"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
-
-    <TextView
-        android:id="@+id/haveAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Already Have an Account?"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register" />
-
-    <TextView
-        android:id="@+id/logInHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Log in Here"
-        android:textSize="20sp"
+        android:layout_marginBottom="24dp"
+        android:text="Already a member? Login"
+        android:gravity="center"
+        android:textSize="18dip"
         android:textStyle="bold"
-        android:onClick="goToLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/haveAccount" />
-
-    <TextView
-        android:id="@+id/RegisterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Register"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:onClick="goToLogin"/>
 
 </LinearLayout>
-
+</ScrollView>
