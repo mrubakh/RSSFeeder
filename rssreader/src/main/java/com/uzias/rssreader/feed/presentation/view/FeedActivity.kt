@@ -27,6 +27,7 @@ import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
 import android.util.Patterns
+import android.widget.Toast
 import com.roger.catloadinglibrary.CatLoadingView
 import kotlinx.android.synthetic.main.custom_dialog_input_url.*
 
@@ -124,12 +125,14 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         } */
 
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            if(Patterns.WEB_URL.matcher(viewInflated.etUrl.text.toString()).matches()) {
-                feedPresenter.clickedButtonOkInputUrl(viewInflated.etUrl.text.toString())
+            var url = viewInflated.etUrl.text.toString()
+            if(Patterns.WEB_URL.matcher(url).matches()) {
+                feedPresenter.clickedButtonOkInputUrl(url)
                 dialog.dismiss()
             }
             else {
-                etUrl.error = "This Url is not valid!"
+                Toast.makeText(this, "$url is not a valid url!", Toast.LENGTH_LONG).show()
+                viewInflated.etUrl.error = "This Url is not valid!"
             }
         }
         builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
