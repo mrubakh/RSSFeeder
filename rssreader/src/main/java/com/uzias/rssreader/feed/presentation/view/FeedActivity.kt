@@ -162,6 +162,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
     }
 
     override fun removeRss(presentationRssSelected: PresentationRss) {
+        feedPresenter.clickedButtonDeleteUrl(presentationRssSelected)
         rssAdapter.removeItem(item = presentationRssSelected)
     }
 

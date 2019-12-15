@@ -18,12 +18,15 @@ import javax.inject.Named
 
 @Module class FeedModule {
 
-    @Provides fun providesFeedPresenter(addRss: AddRss, getRss: GetRss, refreshRss: RefreshRss)
-            : FeedPresenter = FeedPresenterImpl(addRss, getRss, refreshRss)
+    @Provides fun providesFeedPresenter(addRss: AddRss, getRss: GetRss, refreshRss: RefreshRss, deleteRss: DeleteRss)
+            : FeedPresenter = FeedPresenterImpl(addRss, getRss, refreshRss, deleteRss)
 
 
     @Provides fun providesAddRss(feedRepository: FeedRepository) : AddRss
             = AddRssImpl(feedRepository)
+
+    @Provides fun providesDeleteRss(feedRepository: FeedRepository) : DeleteRss
+            = DeleteRssImpl(feedRepository)
 
     @Provides fun providesGetRss(feedRepository: FeedRepository) : GetRss
             = GetRssImpl(feedRepository)

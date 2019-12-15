@@ -2,6 +2,7 @@ package com.uzias.rssreader.feed.presentation.presenter
 
 import com.uzias.rssreader.core.presentation.BaseView
 import com.uzias.rssreader.feed.domain.usecase.AddRss
+import com.uzias.rssreader.feed.domain.usecase.DeleteRss
 import com.uzias.rssreader.feed.domain.usecase.GetRss
 import com.uzias.rssreader.feed.domain.usecase.RefreshRss
 import com.uzias.rssreader.feed.presentation.mapper.PresentationRssMapper
@@ -11,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.disposables.CompositeDisposable
 
-class FeedPresenterImpl(var addRss: AddRss, var getRss: GetRss, var refreshRss: RefreshRss):
+class FeedPresenterImpl(var addRss: AddRss, var getRss: GetRss, var refreshRss: RefreshRss, var deleteRss: DeleteRss):
         FeedPresenter {
 
     private val compositeDispose: CompositeDisposable = CompositeDisposable()
@@ -35,6 +36,20 @@ class FeedPresenterImpl(var addRss: AddRss, var getRss: GetRss, var refreshRss: 
                         .subscribe{
                             view.dismissLoading()
                             view.addRss(it)
+                        }
+        )
+    }
+
+    override fun clickedButtonDeleteUrl(rss: PresentationRss){
+//        view.showLoading()
+        compositeDispose.add(
+                deleteRss.setUrl(rss.url)
+                        .run()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe{
+//                            view.dismissLoading()
+//                            view.removeRss(rss)
                         }
         )
     }

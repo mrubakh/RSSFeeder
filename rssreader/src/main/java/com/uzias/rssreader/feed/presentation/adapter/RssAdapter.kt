@@ -58,7 +58,7 @@ class RssAdapter(
                     Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.delete -> {
-                    removeItem(item = presentationRss)
+//                    removeItem(item = presentationRss)
                     (context as FeedActivity).removeRss(presentationRss)
                     notifyDataSetChanged()
                     Toast.makeText(context, "RSS deleted", Toast.LENGTH_SHORT).show()
