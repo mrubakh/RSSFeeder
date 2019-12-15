@@ -112,8 +112,17 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         val builder = AlertDialog.Builder(this)
         val viewInflated = layoutInflater.inflate(R.layout.custom_dialog_input_url, null)
         builder.setView(viewInflated)
+
+        /*isEditMode = ((arguments != null) && arguments!!.containsKey(FeedActivity.KEY_RSS))
+        if (isEditMode) {
+            builder.setTitle("Edit url")
+            var rss: PresentationRss = (arguments?.getSerializable(ScrollingActivity.KEY_RSS) as PresentationRss)
+
+            etUrl.setText(rss.url)
+        } */
+
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            feedPresenter.clickedButtonOkInputUrl(viewInflated.edittext.text.toString())
+            feedPresenter.clickedButtonOkInputUrl(viewInflated.etUrl.text.toString())
             dialog.dismiss()
         }
         builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
