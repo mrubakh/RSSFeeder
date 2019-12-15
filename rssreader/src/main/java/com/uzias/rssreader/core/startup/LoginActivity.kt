@@ -4,9 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.UserProfileChangeRequest
 import com.uzias.rssreader.R
 import com.uzias.rssreader.feed.presentation.view.FeedActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -38,11 +35,11 @@ class LoginActivity : AppCompatActivity() {
     private fun isLoginValid(): Boolean {
         return when {
             username.text.isEmpty() -> {
-               username.error = "This field can not be empty"
+               username.error = getString(R.string.user_empty)
                 false
             }
             password.text.isEmpty() -> {
-                password.error = "This field can not be empty"
+                password.error = getString(R.string.pass_empty)
                 false
             }
             else -> true

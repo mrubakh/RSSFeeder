@@ -26,8 +26,13 @@
     <string name="login_failed">"Login failed"</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="register">Register</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="user_empty">This field can not be empty</string>
+    <string name="pass_empty">This field can not be empty</string>
 </resources>
