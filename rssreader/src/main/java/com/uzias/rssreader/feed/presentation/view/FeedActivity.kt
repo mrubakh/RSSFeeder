@@ -26,6 +26,7 @@ import com.uzias.rssreader.feed.presentation.model.PresentationItem
 import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.util.Patterns
 import android.webkit.URLUtil
 import android.widget.Toast
@@ -73,6 +74,11 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         progress = CatLoadingView()
         progress.setText(getString(R.string.commons_loading))
 
+//        Log.d("ITEMS_COUNT", rssAdapter.getItemCount().toString())
+//        if (rssAdapter.lastItem != null){
+//            clicked(rssAdapter.lastItem as PresentationRss)
+//        }
+
     }
 
     override fun injectDependencies() {
@@ -101,6 +107,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         drawerToggle.syncState()
+//        Log.d("ITEMS_COUNT_POST_CREATE", rssAdapter.getItemCount().toString())
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {

@@ -50,5 +50,4 @@ class RequeryDatasourceImpl(val reactiveEntityStore: KotlinReactiveEntityStore<P
                 .get().value()
         return Completable.complete()
     }
-
 }
