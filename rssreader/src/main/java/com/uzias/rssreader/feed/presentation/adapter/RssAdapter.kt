@@ -63,6 +63,12 @@ class RssAdapter(
                     (context as FeedActivity).removeRss(presentationRss)
                     notifyDataSetChanged()
                     Toast.makeText(context, "RSS deleted", Toast.LENGTH_SHORT).show()
+
+                    if (itemCount >= 1){
+                        (context as FeedActivity).clicked(lastItem!!)
+                    } else{
+                        (context as FeedActivity).clearItemList()
+                    }
                 }
             }
             true

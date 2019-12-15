@@ -76,6 +76,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
 
         rssAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                Log.d("ITEMS_COUNT_CHANGED", itemCount.toString())
                 recyclerview_rss.setState(RecyclerViewWithFeedback.State.FILLED)
                 recyclerview_items.setState(RecyclerViewWithFeedback.State.FILLED)
             }
@@ -164,6 +165,12 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         presentationRss.items.forEach {
             itemAdapter.addItem(it)
         }
+    }
+
+    fun clearItemList(){
+        itemAdapter.clear()
+        recyclerview_rss.setState(RecyclerViewWithFeedback.State.EMPTY)
+        recyclerview_items.setState(RecyclerViewWithFeedback.State.EMPTY)
     }
 
     override fun clicked(presentationItem: PresentationItem) {
