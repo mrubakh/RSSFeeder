@@ -23,26 +23,8 @@ class LoginActivity : AppCompatActivity() {
         if(!isLoginValid()){
             return
         }
-
-//        FirebaseAuth.getInstance().signInWithEmailAndPassword(
-//            username.text.toString(),
-//            password.text.toString()
-//        ).addOnSuccessListener {
-//            Toast.makeText(
-//                this@LoginActivity, "Login Successful",
-//                Toast.LENGTH_LONG
-//            ).show()
-//
             //Open main Activity
             startActivity(Intent(this@LoginActivity, FeedActivity::class.java))
-//
-//        }.addOnFailureListener{
-//            Toast.makeText(
-//                this@LoginActivity, "Error: ${it.message}",
-//                Toast.LENGTH_LONG
-//            ).show()
-//        }
-        
     }
 
     fun goToRegistration(v: View){

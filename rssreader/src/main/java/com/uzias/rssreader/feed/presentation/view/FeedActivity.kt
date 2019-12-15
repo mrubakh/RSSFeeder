@@ -26,7 +26,9 @@ import com.uzias.rssreader.feed.presentation.model.PresentationItem
 import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
+import android.util.Patterns
 import com.roger.catloadinglibrary.CatLoadingView
+import kotlinx.android.synthetic.main.custom_dialog_input_url.*
 
 
 class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
@@ -122,8 +124,13 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         } */
 
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            feedPresenter.clickedButtonOkInputUrl(viewInflated.etUrl.text.toString())
-            dialog.dismiss()
+            if(Patterns.WEB_URL.matcher(viewInflated.etUrl.text.toString()).matches()) {
+                feedPresenter.clickedButtonOkInputUrl(viewInflated.etUrl.text.toString())
+                dialog.dismiss()
+            }
+            else {
+                etUrl.error = "This Url is not valid!"
+            }
         }
         builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
         builder.show()
