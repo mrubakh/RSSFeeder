@@ -6,6 +6,7 @@ import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import com.uzias.rssreader.core.presentation.BaseAdapter
@@ -31,7 +32,11 @@ class RssAdapter(
 
             rss?.let {
                 with(holder){
-                    urlView.text = URL(it.url).host
+                    if (URLUtil.isValidUrl(it.url)) {
+                        urlView.text = URL(it.url).host
+                    } else {
+                        holder.itemView.visibility = View.GONE
+                    }
                     Picasso.with(context).load("https://besticon-demo.herokuapp.com/icon?url="+it.url+"&size=80..120..200").into(imageView)
                     holder.itemView.setOnClickListener {
                         rssListener.clicked(rss)

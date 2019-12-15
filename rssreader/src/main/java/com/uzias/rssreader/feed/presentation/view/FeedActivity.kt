@@ -27,6 +27,7 @@ import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
 import android.util.Patterns
+import android.webkit.URLUtil
 import android.widget.Toast
 import com.roger.catloadinglibrary.CatLoadingView
 import kotlinx.android.synthetic.main.custom_dialog_input_url.*
@@ -126,7 +127,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
 
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
             var url = viewInflated.etUrl.text.toString()
-            if(Patterns.WEB_URL.matcher(url).matches()) {
+            if(Patterns.WEB_URL.matcher(url).matches() && URLUtil.isValidUrl(url)) {
                 feedPresenter.clickedButtonOkInputUrl(url)
                 dialog.dismiss()
             }

@@ -13,7 +13,7 @@ class NetworkModule {
 
     companion object {
 
-        private val API_URL : String = "http://rss.nytimes.com/"
+        private val API_URL : String = "https://rss.nytimes.com/"
 
     }
 
