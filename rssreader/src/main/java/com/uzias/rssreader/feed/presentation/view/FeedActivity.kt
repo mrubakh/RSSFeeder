@@ -91,6 +91,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
 
     override fun addRss(presentationRss: PresentationRss) {
         rssAdapter.addItem(presentationRss)
+        clicked(presentationRss)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

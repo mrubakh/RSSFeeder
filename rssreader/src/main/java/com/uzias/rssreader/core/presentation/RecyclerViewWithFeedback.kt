@@ -33,7 +33,7 @@ class RecyclerViewWithFeedback : RelativeLayout {
 
     private fun init(attrs: AttributeSet?) {
         View.inflate(context, R.layout.util_recyclerview_with_feedback, this)
-        recyclerView_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+//        recyclerView_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         if (attrs != null) {
             val icon = getIcon(attrs)
             if (icon != -1) {

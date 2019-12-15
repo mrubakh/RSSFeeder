@@ -17,30 +17,34 @@
             style="@style/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageview_image"
-            tools:src="@mipmap/ic_launcher"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="fitXY" />
-
-        <TextView
-            android:id="@+id/textview_description"
-            style="@style/Headline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center" />
 
         <TextView
             android:id="@+id/textview_date"
             style="@style/Headline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:layout_marginTop="5dp"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/imageview_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textview_description"
+            style="@style/Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="17dp" />
+
 
     </LinearLayout>
 

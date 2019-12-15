@@ -1,7 +1,9 @@
 package com.uzias.rssreader.feed.presentation.adapter
 
 import android.content.Context
+import android.os.Build
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.View
 import com.squareup.picasso.Picasso
 import com.uzias.rssreader.core.presentation.BaseAdapter
@@ -24,10 +26,18 @@ class ItemAdapter(
                 with(holder){
                     itemView.setOnClickListener{itemListener.clicked(item)}
                     titleView.text = item.title
-                    descriptionView.text = item.description
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        descriptionView.text = Html.fromHtml(item.description, Html.FROM_HTML_MODE_COMPACT)
+                    } else {
+                        descriptionView.text = Html.fromHtml(item.description)
+                    }
+//                    descriptionView.text = item.description
                     dateView.text = item.pubDate
                     if (item.imageUrl.isNotEmpty()){
                         Picasso.with(context).load(item.imageUrl).into(imageView)
+                    } else{
+                        imageView.setImageResource(android.R.color.transparent)
+                        imageView.visibility = View.GONE
                     }
                 }
             }
