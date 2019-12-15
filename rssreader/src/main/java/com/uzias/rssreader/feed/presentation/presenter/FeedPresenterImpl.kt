@@ -75,7 +75,7 @@ class FeedPresenterImpl(var addRss: AddRss, var getRss: GetRss, var refreshRss: 
         view.dismissSwipeLoading()
     }
 
-    override fun setPresentationSelected(presentationRss: PresentationRss) {
+    override fun setPresentationSelected(presentationRss: PresentationRss?) {
         presentationRssSelected = presentationRss
     }
 

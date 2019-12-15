@@ -9,6 +9,6 @@ interface FeedPresenter: BasePresenter {
     fun clickedButtonOkInputUrl(url: String)
     fun clickedButtonDeleteUrl(rss: PresentationRss)
     fun refreshFeedActioned()
-    fun setPresentationSelected(presentationRss: PresentationRss)
+    fun setPresentationSelected(presentationRss: PresentationRss?)
 
 }

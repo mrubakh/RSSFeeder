@@ -169,6 +169,7 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
 
     fun clearItemList(){
         itemAdapter.clear()
+        feedPresenter.setPresentationSelected(null)
         recyclerview_rss.setState(RecyclerViewWithFeedback.State.EMPTY)
         recyclerview_items.setState(RecyclerViewWithFeedback.State.EMPTY)
     }
