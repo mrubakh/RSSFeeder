@@ -11,13 +11,12 @@
         android:id="@+id/logo"
         android:layout_width="322dp"
         android:layout_height="169dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginBottom="35dp"
+        android:layout_marginTop="150dp"
         android:maxWidth="50dp"
         android:maxHeight="60dp"
-        app:srcCompat="@drawable/rssfeed_logo"
-        android:layout_alignParentTop="true"/>
+        app:srcCompat="@drawable/rssfeed_logo"/>
 
     <TextView
         android:id="@+id/tvProgPerc"
