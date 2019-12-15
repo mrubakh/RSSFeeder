@@ -45,6 +45,7 @@ class RecyclerViewWithFeedback : RelativeLayout {
                 textView_label.text = context.getString(labelRes)
             }
         }
+        textView_label.text = "Add your first RSS feed by clicking the + button"
     }
 
     override fun onAttachedToWindow() {

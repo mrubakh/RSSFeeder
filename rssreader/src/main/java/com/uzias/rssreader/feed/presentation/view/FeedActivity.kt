@@ -26,6 +26,7 @@ import com.uzias.rssreader.feed.presentation.model.PresentationItem
 import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.util.Patterns
 import android.webkit.URLUtil
@@ -64,13 +65,22 @@ class FeedActivity : BaseActivity(), FeedView, RssListener, ItemListener {
         button_add.setOnClickListener { feedPresenter.clickedButtonAdd() }
 
         recyclerview_rss.getRecyclerView().adapter = rssAdapter
+        Log.d("ITEMS_COUNT", rssAdapter.getItemCount().toString())
         recyclerview_rss.getRecyclerView().layoutManager = LinearLayoutManager(this)
-        recyclerview_rss.setState(RecyclerViewWithFeedback.State.FILLED)
+        recyclerview_rss.setState(RecyclerViewWithFeedback.State.EMPTY)
 
         recyclerview_items.getRecyclerView().adapter = itemAdapter
         recyclerview_items.getRecyclerView().layoutManager = LinearLayoutManager(this)
-        recyclerview_items.setState(RecyclerViewWithFeedback.State.FILLED)
+        recyclerview_items.setState(RecyclerViewWithFeedback.State.EMPTY)
         swiperefreshlayout.setOnRefreshListener { feedPresenter.refreshFeedActioned() }
+
+        rssAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                recyclerview_rss.setState(RecyclerViewWithFeedback.State.FILLED)
+                recyclerview_items.setState(RecyclerViewWithFeedback.State.FILLED)
+            }
+        })
+
         progress = CatLoadingView()
         progress.setText(getString(R.string.commons_loading))
 
